@@ -17,6 +17,16 @@ const CustomNavbar = () => {
         {name: "Categories", link: "/categories"},
     ])
 
+    const [loginLinks, setLoginLinks] = useState([
+      {
+        name: 'Dashboard',
+        link: '/dashboard/home',
+      },
+      {
+        name: 'Profile',
+        link: '/dashboard/profile',
+      },
+  ])
   return (
     <Navbar className='shadow ' fluid rounded>
       <Navbar.Brand href="https://flowbite-react.com">
@@ -45,7 +55,11 @@ const CustomNavbar = () => {
         {
         isLogin() && ( <>
         
-        <Button pill size='sm' color='purple'>
+        <Button 
+          as={Link} to={'/dashboard/profile'} 
+          pill 
+          size='sm' 
+          color='purple'>
                   {user.name}
               </Button>
 
@@ -78,8 +92,17 @@ const CustomNavbar = () => {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        {
+        { !isLogin() &&
             links.map((link, index) => (
+                <Navbar.Link as={Link} key={index} to={link.link}>
+                    {/* <Link to={"/"}>Home</Link> */}
+                    {link.name}
+                </Navbar.Link>
+            ))
+        }
+
+        { isLogin() &&
+            loginLinks.map((link, index) => (
                 <Navbar.Link as={Link} key={index} to={link.link}>
                     {/* <Link to={"/"}>Home</Link> */}
                     {link.name}

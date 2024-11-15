@@ -10,6 +10,10 @@ import ErrorPage from '../pages/ErrorPage.jsx'
 import HomePage from '../pages/HomePage.jsx'
 import App from '../App.jsx'
 import { AuthProvider } from '../context/authContext.jsx'
+import ProtectedRoute from '../components/ProtectedRoute.jsx'
+import Dashboard from '../pages/protected/dashboard.jsx'
+import Profile from '../pages/protected/Profile.jsx'
+import DashboardHome from '../pages/protected/DashboardHome.jsx'
 
 const router = createBrowserRouter ([
     {
@@ -53,6 +57,21 @@ const router = createBrowserRouter ([
           path:'/signup',
           element:<Signup />,
         },
+        {
+          path: '/dashboard',
+          element: <ProtectedRoute element={Dashboard} />,
+          children: [
+            {
+              path: 'home',
+              element: <DashboardHome />
+            },
+            {
+              path: 'profile',
+              element: <ProtectedRoute element={Profile} />,
+            },
+          ]
+        },
+        
       ],
     },
     
