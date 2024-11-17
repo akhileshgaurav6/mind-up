@@ -1,8 +1,14 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
 const Services = () => {
   return (
-    <div>Services</div>
+    <div>
+      <Helmet>
+        <title>Services Provided | MindUp</title>
+      </Helmet>
+      <div>Services</div>
+    </div>
   )
 }
 

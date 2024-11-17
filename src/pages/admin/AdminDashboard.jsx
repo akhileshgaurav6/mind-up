@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Button, Drawer, Sidebar, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
@@ -14,11 +15,11 @@ import {
   HiUsers,
 } from "react-icons/hi";
 import { useAuth } from '../../context/authContext';
-import { ROLE_ADMIN } from '../../config/constants';
-import { convertRoleObjectToArray } from "../../helpers/helper";
+import { MdVideoCall } from "react-icons/md";
+import { FaBorderAll } from "react-icons/fa6";
+import { IoMdAddCircle } from "react-icons/io";
 
-
-const Dashboard = () => {
+const AdminDashboard = () => {
 
   const [isOpen, setIsOpen] = useState(true);
 
@@ -27,7 +28,7 @@ const Dashboard = () => {
   const { user, logout } = useAuth();
 
   return (
-    <>
+    <div>
       <div className='mt-28'>
       {/* content Area */}
       <div className={isOpen ? "pl-80" : ""}>
@@ -37,7 +38,7 @@ const Dashboard = () => {
        </div>
       </div>
       <Drawer className='mt-15' open={isOpen} onClose={handleClose}>
-        <Drawer.Header title="USER DASHBOARD" titleIcon={() => <></>} />
+        <Drawer.Header title="Admin Menu" titleIcon={() => <></>} />
         <Drawer.Items>
           <Sidebar
             aria-label="Sidebar with multi-level dropdown example"
@@ -50,28 +51,34 @@ const Dashboard = () => {
                 </form>
                 <Sidebar.Items>
                   <Sidebar.ItemGroup>
-                    <Sidebar.Item as={Link} to={'/dashboard/home'} icon={HiChartPie}>
+                    <Sidebar.Item as={Link} to={'/admin/home'} icon={HiChartPie}>
                       Dashboard
                     </Sidebar.Item>
                     <Sidebar.Item as={Link} to={'/dashboard/profile'} icon={HiShoppingBag}>
                       Profile
                     </Sidebar.Item>
-                    <Sidebar.Item href="/users/list" icon={HiUsers}>
-                      My Courses
+                    <Sidebar.Item as={Link} to={"/admin/courses"} icon={HiUsers}>
+                      All Courses
                     </Sidebar.Item>
-                    <Sidebar.Item href="/authentication/sign-in" icon={HiLogin}>
-                      Store
+                    <Sidebar.Item as={Link} to={"/admin/categories"} icon={HiLogin}>
+                      Categories
                     </Sidebar.Item>
-                    <Sidebar.Item href="/authentication/sign-up" icon={HiPencil}>
-                      Invoices
+                    <Sidebar.Item as={Link} to={"/admin/add-course"} icon={HiPencil}>
+                      Add Course
+                    </Sidebar.Item>
+                    <Sidebar.Item as={Link} to={"/admin/add-category"} icon={IoMdAddCircle}>
+                      Add Category
                     </Sidebar.Item>
                   </Sidebar.ItemGroup>
                   <Sidebar.ItemGroup>
-                    <Sidebar.Item href="https://github.com/themesberg/flowbite-react/" icon={HiClipboard}>
-                      Bookmarks
+                    <Sidebar.Item href="https://github.com/themesberg/flowbite-react/" icon={MdVideoCall}>
+                      Upload Videos
+                    </Sidebar.Item>
+                    <Sidebar.Item href="https://flowbite-react.com/" icon={FaBorderAll}>
+                      Orders
                     </Sidebar.Item>
                     <Sidebar.Item href="https://flowbite-react.com/" icon={HiCollection}>
-                      Feedback
+                      Users
                     </Sidebar.Item>
                     <Sidebar.Item  
                     icon={HiInformationCircle}
@@ -82,22 +89,6 @@ const Dashboard = () => {
                       
                       Logout
                     </Sidebar.Item>
-
-                    {
-                      (convertRoleObjectToArray(user.roles).includes(ROLE_ADMIN)) ? (
-                      <Sidebar.Item  
-                      icon={HiInformationCircle}
-                      as={Link}
-                      to="/admin/home"
-                      >
-                        
-                        Admin Dashboard
-                      </Sidebar.Item>
-                      ) : (
-                        ""
-                      )
-                    }
-
                   </Sidebar.ItemGroup>
                 </Sidebar.Items>
               </div>
@@ -107,8 +98,8 @@ const Dashboard = () => {
       </Drawer>
     
       </div>
-    </>
+    </div>
   )
 }
 
-export default Dashboard
+export default AdminDashboard

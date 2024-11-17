@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"
 import { createUser } from '../services/auth.service';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 const Signup = () => {
 
   const navigate = useNavigate()
@@ -56,7 +57,11 @@ const Signup = () => {
 
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors">
+    <div>
+      <Helmet>
+        <title>Signup Minpup</title>
+      </Helmet>
+      <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors">
       <div className="w-full max-w-sm p-6 bg-white dark:bg-gray-800 shadow-md rounded-md">
         <h2 className="text-2xl font-semibold text-center text-gray-700 dark:text-gray-200 mb-6">
           Create Your Account
@@ -217,6 +222,7 @@ const Signup = () => {
           </div>
         </form>
       </div>
+    </div>
     </div>
   )
 }
