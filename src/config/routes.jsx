@@ -22,14 +22,20 @@ import AdminHomePage from "../pages/admin/HomePage.jsx";
 import AllCourses from '../pages/admin/AllCourses.jsx'
 import AllCategories from '../pages/admin/AllCategories.jsx'
 import AddCourse from "../pages/admin/AddCourse.jsx";
+import { Provider } from 'react-redux'
+import store from '../redux/store'
+import Hooks from '../pages/Hooks.jsx'
+import Performance from '../pages/Performance.jsx'
 
 const router = createBrowserRouter ([
     {
       path:'/',
       element:(
-      <AuthProvider>
-        <HomePage />
-      </AuthProvider>
+      <Provider store={store}>  
+        <AuthProvider>
+          <HomePage />
+        </AuthProvider>
+      </Provider>
       ),
       errorElement: <ErrorPage />,
       children:[
@@ -113,6 +119,17 @@ const router = createBrowserRouter ([
         ,
       ],
     },
+
+    {
+      path: '/hooks',
+      element: <Hooks />
+    },
+
+    {
+      path: 'performance-hook',
+      element: <Performance />
+    }
+
     
   ]);
 

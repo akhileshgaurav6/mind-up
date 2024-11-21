@@ -6,6 +6,7 @@ import { loginUser } from '../services/auth.service';
 import toast from 'react-hot-toast';
 import { useAuth } from '../context/authContext';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
 
