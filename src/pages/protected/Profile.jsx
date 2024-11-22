@@ -1,6 +1,7 @@
 import React from 'react'
 import UserProfileCard from '../../components/UserProfileCard'
 import { useAuth } from '../../context/authContext'
+import { Helmet } from 'react-helmet'
 
 const Profile = () => {
     const {user} = useAuth()

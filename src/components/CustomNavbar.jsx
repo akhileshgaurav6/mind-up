@@ -32,7 +32,7 @@ const CustomNavbar = () => {
       },
   ])
   return (
-    <Navbar className='shadow ' fluid rounded>
+    <Navbar className='shadow fixed w-full z-50' >
       <Navbar.Brand href="https://flowbite-react.com">
         <img 
             src={logo} 
@@ -43,6 +43,7 @@ const CustomNavbar = () => {
       
 
       <div className="flex gap md:order-2">
+        {!isLogin() && (
         <>
           <Link to={'/login'}>
               <Button pill size='sm' color='blue'>
@@ -61,6 +62,7 @@ const CustomNavbar = () => {
               </Button>
           </Link>
         </>
+        )}
 
         {
         isLogin() && ( <>
@@ -82,7 +84,7 @@ const CustomNavbar = () => {
         </>
       )}
 
-      {
+      {/* {
         isLogin() && ( <>
         
         <Button pill size='sm' color='purple'>
@@ -96,7 +98,7 @@ const CustomNavbar = () => {
               </Button>
           
         </>
-      )}
+      )} */}
 
         <DarkThemeToggle />
         <Navbar.Toggle />

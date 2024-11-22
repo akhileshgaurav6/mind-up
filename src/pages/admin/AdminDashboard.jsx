@@ -37,7 +37,7 @@ const AdminDashboard = () => {
        <Outlet />
        </div>
       </div>
-      <Drawer className='mt-15' open={isOpen} onClose={handleClose}>
+      <Drawer className='mt-14 ' open={isOpen} onClose={handleClose}>
         <Drawer.Header title="Admin Menu" titleIcon={() => <></>} />
         <Drawer.Items>
           <Sidebar
