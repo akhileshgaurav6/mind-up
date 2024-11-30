@@ -18,8 +18,11 @@ import { useAuth } from '../../context/authContext';
 import { MdVideoCall } from "react-icons/md";
 import { FaBorderAll } from "react-icons/fa6";
 import { IoMdAddCircle } from "react-icons/io";
+import { useLocation } from 'react-router-dom';
 
 const AdminDashboard = () => {
+
+  const location = useLocation();
 
   const [isOpen, setIsOpen] = useState(true);
 
@@ -51,22 +54,46 @@ const AdminDashboard = () => {
                 </form>
                 <Sidebar.Items>
                   <Sidebar.ItemGroup>
-                    <Sidebar.Item as={Link} to={'/admin/home'} icon={HiChartPie}>
+                    <Sidebar.Item 
+                      active={location.pathname === "/admin/home"}
+                      as={Link} 
+                      to={'/admin/home'} 
+                      icon={HiChartPie}>
                       Dashboard
                     </Sidebar.Item>
-                    <Sidebar.Item as={Link} to={'/dashboard/profile'} icon={HiShoppingBag}>
+                    <Sidebar.Item 
+                      as={Link} 
+                      to={'/dashboard/profile'} 
+                      icon={HiShoppingBag}
+                      active={location.pathname === "/dashboard/profile"}>
                       Profile
                     </Sidebar.Item>
-                    <Sidebar.Item as={Link} to={"/admin/courses"} icon={HiUsers}>
+                    <Sidebar.Item 
+                      as={Link} 
+                      to={"/admin/courses"} 
+                      icon={HiUsers}
+                      active={location.pathname === "/admin/courses"}>
                       All Courses
                     </Sidebar.Item>
-                    <Sidebar.Item as={Link} to={"/admin/categories"} icon={HiLogin}>
+                    <Sidebar.Item 
+                      as={Link} 
+                      to={"/admin/categories"} 
+                      active={location.pathname === "/admin/categories"}
+                      icon={HiLogin}>
                       Categories
                     </Sidebar.Item>
-                    <Sidebar.Item as={Link} to={"/admin/add-course"} icon={HiPencil}>
+                    <Sidebar.Item 
+                      active={location.pathname === "/admin/add-course"}
+                      as={Link} 
+                      to={"/admin/add-course"} 
+                      icon={HiPencil}>
                       Add Course
                     </Sidebar.Item>
-                    <Sidebar.Item as={Link} to={"/admin/add-category"} icon={IoMdAddCircle}>
+                    <Sidebar.Item 
+                      as={Link} 
+                      to={"/dashboard/profile"} 
+                      active={location.pathname === "/dashboard/profile"}
+                      icon={IoMdAddCircle}>
                       Add Category
                     </Sidebar.Item>
                   </Sidebar.ItemGroup>
