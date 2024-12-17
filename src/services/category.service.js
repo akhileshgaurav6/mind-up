@@ -19,8 +19,8 @@ export const deleteCategory = async(categoryId) => {
 };
 
 //update category api call
-export const updateCategory = async(categoryId) => {
-    const result = await privateAxios.put(`/categories/${categoryId}`);
+export const updateCategory = async(categoryId,category) => {
+    const result = await privateAxios.put(`/categories/${categoryId}`,category);
     return result.data;
 };
 

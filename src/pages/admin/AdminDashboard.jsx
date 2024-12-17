@@ -98,7 +98,9 @@ const AdminDashboard = () => {
                     </Sidebar.Item>
                   </Sidebar.ItemGroup>
                   <Sidebar.ItemGroup>
-                    <Sidebar.Item href="https://github.com/themesberg/flowbite-react/" icon={MdVideoCall}>
+                    <Sidebar.Item as={Link} 
+                      to={"/admin/upload-video"}  
+                       icon={MdVideoCall}>
                       Upload Videos
                     </Sidebar.Item>
                     <Sidebar.Item href="https://flowbite-react.com/" icon={FaBorderAll}>

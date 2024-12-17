@@ -18,6 +18,26 @@ export const getAllCourses = async (
   return response.data;
 };
 
+//single course view
+export const getCourseById = async (id) => {
+  const response = await privateAxios.get(`/courses/${id}`);
+  return response.data;
+};
+
+//update course
+
+export const updateCourse = async (course, id) => {
+  const response = await privateAxios.put(`/courses/${id}`, course);
+  return response.data;
+};
+
+//delete
+
+export const deleteCourse = async (id) => {
+  const response = await privateAxios.delete(`/courses/${id}`);
+  return response.data;
+};
+
 export const uploadCoursebanner = async (courseId, banner) => {
     let formData = new FormData();
     formData.append("banner", banner);
